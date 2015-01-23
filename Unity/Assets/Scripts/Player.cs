@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// variable playerNumber MUST BE between 1 and 4!!
+    /// </summary>
+
     #region
     /// <summary>
     /// all the private variables
@@ -15,6 +19,7 @@ public class Player : MonoBehaviour
     #endregion
 
     public float speed, rotationSpeed;
+    public int playerNumber;
 
     void Awake()
     {
@@ -24,9 +29,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        _h = Input.GetAxisRaw("Horizontal");
-        _v = Input.GetAxisRaw("Vertical");
+        _input = new Vector3(Input.GetAxisRaw("Player" + playerNumber + " Horizontal"), 0, Input.GetAxisRaw("Player" + playerNumber + " Vertical"));
+        _h = Input.GetAxisRaw("Player" + playerNumber + " Horizontal");
+        _v = Input.GetAxisRaw("Player" + playerNumber + " Vertical");
 
         #region
         /// <summary>
@@ -52,8 +57,5 @@ public class Player : MonoBehaviour
 
         // Move the player to it's current position plus the movement.
         _playerRigidbody.MovePosition(_playerRigidbody.position + _movement);
-
-       
-
     }
 }
