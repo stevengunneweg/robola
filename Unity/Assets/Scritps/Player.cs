@@ -3,11 +3,16 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    #region
+    /// <summary>
+    /// all the private variables
+    /// </summary>
     private int _floorMask;
     private float _h, _v;
     private Vector3 _movement, _input;
     private Rigidbody _playerRigidbody;
     private Quaternion _playerRotation;
+    #endregion
 
     public float speed, rotationSpeed;
 
@@ -23,13 +28,18 @@ public class Player : MonoBehaviour
         _h = Input.GetAxisRaw("Horizontal");
         _v = Input.GetAxisRaw("Vertical");
 
-        Move(_h, _v);
-
+        #region
+        /// <summary>
+        ///  code to make rotate the player towards you look
+        /// </summary>
         if (_input != Vector3.zero)
         {
             _playerRotation = Quaternion.LookRotation(_input);
             transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, _playerRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
         }
+        #endregion
+
+        Move(_h, _v);       
     }
 
     void Move(float h, float v)
@@ -39,12 +49,11 @@ public class Player : MonoBehaviour
 
         // Normalise the movement vector and make it proportional to the speed per second.
         _movement = _movement.normalized * speed * Time.deltaTime;
-        //_movement = _input * speed * Time.deltaTime;
 
         // Move the player to it's current position plus the movement.
-        _playerRigidbody.MovePosition(transform.position + _movement);
+        _playerRigidbody.MovePosition(_playerRigidbody.position + _movement);
 
-        //_playerRigidbody.AddForce(_input + _movement);
+       
 
     }
 }
