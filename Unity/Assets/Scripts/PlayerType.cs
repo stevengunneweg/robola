@@ -5,6 +5,8 @@ public class PlayerType : MonoBehaviour {
     private Player _player;
     private Light _light;
 
+    public float infectedSpeed, uninfectedSpeed;
+
     public bool infected;
 
     void Awake()
@@ -14,14 +16,32 @@ public class PlayerType : MonoBehaviour {
     }
 
     void Update()
-    { 
+    {
+        #region
         if (infected)
         {
-            _player.speed = 5.75f;
+            _player.speed = infectedSpeed;
             _light.color = Color.green;
         }else {
-            _player.speed = 5f;
+            _player.speed = uninfectedSpeed;
             _light.color = Color.white;
+        }
+        #endregion
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            CollisionPlayer(col);
+        }
+    }
+
+    void CollisionPlayer(Collision col)
+    {
+        if (this.infected)
+        {
+            col.gameObject.GetComponent<PlayerType>().infected = this.infected;
         }
     }
 }
