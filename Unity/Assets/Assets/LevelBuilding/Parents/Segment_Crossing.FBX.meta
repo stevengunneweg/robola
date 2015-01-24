@@ -1,13 +1,40 @@
 fileFormatVersion: 2
-guid: 6b758eadfc028ff4681ddd1f19ed053f
+guid: f19830c5641378a408ed0961b23db745
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Piece_InnerCorner001
+    100000: Piece_OuterCorner
+    100002: Piece_OuterCorner002
+    100004: Piece_OuterCorner003
+    100006: Piece_OuterCorner004
+    100008: Plane009
+    100010: //RootNode
+    400000: Piece_OuterCorner
+    400002: Piece_OuterCorner002
+    400004: Piece_OuterCorner003
+    400006: Piece_OuterCorner004
+    400008: Plane009
+    400010: //RootNode
+    2300000: Piece_OuterCorner
+    2300002: Piece_OuterCorner002
+    2300004: Piece_OuterCorner003
+    2300006: Piece_OuterCorner004
+    2300008: Plane009
+    3300000: Piece_OuterCorner
+    3300002: Piece_OuterCorner002
+    3300004: Piece_OuterCorner003
+    3300006: Piece_OuterCorner004
+    3300008: Plane009
+    4300000: Plane009
+    4300002: Piece_OuterCorner
+    4300004: Piece_OuterCorner002
+    4300006: Piece_OuterCorner003
+    4300008: Piece_OuterCorner004
+    6400000: Piece_OuterCorner
+    6400002: Piece_OuterCorner002
+    6400004: Piece_OuterCorner003
+    6400006: Piece_OuterCorner004
+    6400008: Plane009
     9500000: //RootNode
   materials:
     importMaterials: 1

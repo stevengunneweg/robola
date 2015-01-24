@@ -8,12 +8,23 @@ public class Game : MonoBehaviour {
 
 	private GameType type;
 	private List<object> players;
+    
+    private PlayerType[] playerTypes;
+    private PlayerType infectedPerson; int randomPlayer;
 	//private	float time;
 
 	public GameObject InfectorWinPanel;
 	public GameObject PlayerWinPanel;
 
 	public bool soundPlayed = false;
+    void Start()
+    {
+        playerTypes = FindObjectsOfType<PlayerType>();
+        randomPlayer = Random.Range(0, 4);
+        infectedPerson = playerTypes[randomPlayer] as PlayerType;
+        infectedPerson.infected = true;
+
+    }
 
 	void Update () {
 		//GameObject.Find("GameTimer").GetComponent<Text>().text = time.ToString("f2");

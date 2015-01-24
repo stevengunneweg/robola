@@ -62,6 +62,6 @@ public class VoteSystem : MonoBehaviour {
 
 		yield return new WaitForSeconds(1);
 
-		Application.LoadLevel("Game");
+		Application.LoadLevel("Game_Scene01");
 	}
 }
