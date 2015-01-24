@@ -9,7 +9,7 @@ public class Map : MonoBehaviour {
 	public const int MAP_HEIGHT = 9;
 	public const int PENIS_SIZE = 40;
 
-	private Penis[,] penisses;
+	public Penis[,] penisses;
 
 	public enum Direction {
 		Up,
@@ -51,7 +51,7 @@ public class Map : MonoBehaviour {
 		}
 	}
 
-	private Penis FindClosest(Vector3 position)
+	public Penis FindClosest(Vector3 position)
 	{
 		Penis closest = null;
 		float smallestDistance = float.MaxValue;
@@ -86,6 +86,10 @@ public class Map : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public Penis RandomPenis() {
+		return penisses[Random.Range(0, Map.MAP_WIDTH - 1), Random.Range(0, Map.MAP_HEIGHT - 1)];
 	}
 	
 	public void PushRow(int index, Direction direction) {
@@ -163,7 +167,7 @@ public class Map : MonoBehaviour {
 	{
 		foreach(PenisMovement move in movements)
 		{
-			LeanTween.move(move.penis.gameObject, move.target, 1f).setDelay(1f);
+			LeanTween.move(move.penis.gameObject, move.target, 1f);
 		}
 	}
 
@@ -199,28 +203,33 @@ public class Map : MonoBehaviour {
 	
 	
 	public void RotatePenissesAroundPenisCW(Penis penis) {
+		List<PenisMovement> movements = new List<PenisMovement>();
+
 		Vector2 penisPos = GetPenisPostition (penis);
 		if (penisPos.Equals(new Vector2(-1, -1))) {
 			return;
 		}
 		List<Penis> penissesToRotate = new List<Penis>();
 		if ((int)penisPos.x > 0) { //Left
-			penissesToRotate.Add(penisses[(int)penisPos.x - 1, (int)penisPos.y]);
+			penissesToRotate.Add(penisses[(int)penisPos.y, (int)penisPos.x - 1]);
 		}
 		if ((int)penisPos.y > 0) { //Up
-			penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y - 1]);
+			penissesToRotate.Add(penisses[(int)penisPos.y - 1, (int)penisPos.x]);
 		}
-		if ((int)penisPos.x < 9) { //Right
-			penissesToRotate.Add(penisses[(int)penisPos.x + 1, (int)penisPos.y]);
+		if ((int)penisPos.x < MAP_WIDTH - 1) { //Right
+			penissesToRotate.Add(penisses[(int)penisPos.y, (int)penisPos.x + 1]);
 		}
-		if ((int)penisPos.y < 9) { //Down
-			penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y + 1]);
+		if ((int)penisPos.y < MAP_HEIGHT - 1) { //Down
+			penissesToRotate.Add(penisses[(int)penisPos.y + 1, (int)penisPos.x]);
 		}
 		Penis temp = penissesToRotate[penissesToRotate.Count - 1];
 		for (int i = penissesToRotate.Count - 2; i >= 0; i--) {
+			movements.Add (new PenisMovement(penissesToRotate[i], penissesToRotate[i + 1].transform.position, true));
 			penissesToRotate[i + 1] = penissesToRotate[i];
 		}
+		movements.Add (new PenisMovement(temp, penissesToRotate[0].transform.position, true));
 		penissesToRotate[0] = temp;
+		MovePenis(movements);
 	}
 
 	public void RotatePenissesAroundPenisCCW(Penis penis) {
@@ -235,10 +244,10 @@ public class Map : MonoBehaviour {
 		if ((int)penisPos.y > 0) { //Up
 				penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y - 1]);
 		}
-		if ((int)penisPos.x < 9) { //Right
+		if ((int)penisPos.x < MAP_WIDTH - 1) { //Right
 			penissesToRotate.Add(penisses[(int)penisPos.x + 1, (int)penisPos.y]);
 		}
-		if ((int)penisPos.y < 9) { //Down
+		if ((int)penisPos.y < MAP_HEIGHT - 1) { //Down
 			penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y + 1]);
 		}
 		Penis temp = penissesToRotate[0];
