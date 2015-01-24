@@ -10,7 +10,8 @@ public class SwitchWithRandomOtherPlayerType : GameType
 
 
     protected override void UsePowerup(PlayerType player)
-    {
+	{
+		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/shift sfx");
         SwitchWithUnluckyBastard(player, unluckyPersonToSwitchWith(player));
     }
 

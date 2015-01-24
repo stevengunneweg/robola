@@ -8,12 +8,11 @@ public class TeleportType : GameType {
     private ParticleSystem PS;
 
 	protected void Start () {
-
-        
 	}
 	
 	protected override void UsePowerup(PlayerType player)
 	{
+		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/teleport sfx");
 		float yPos = player.transform.position.y;
         Vector3 newPos = FindObjectOfType<Map>().RandomPenis().transform.position;
         TR = player.GetComponent<TrailRenderer>();

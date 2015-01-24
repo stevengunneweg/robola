@@ -9,7 +9,8 @@ public class SwitchWithInfectedFurthestAwayType : GameType
     private Vector3 playerPos, infectedPos;
 
     protected override void UsePowerup(PlayerType player)
-    {
+	{
+		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/teleport sfx");
         SwitchWithInfected(player, FurthestAway(player));
     }
 
