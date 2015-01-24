@@ -51,10 +51,4 @@ public class PlayerType : MonoBehaviour {
             col.gameObject.GetComponent<PlayerType>().infected = this.infected;
         }
     }
-
-    void UsePowerUp()
-    {
-        StartCoroutine(_powerUps.TileDrop(_PlayerRigidbody));
-        //_powerUps.Blink(_PlayerRigidbody, _player.input);
-    }
 }
