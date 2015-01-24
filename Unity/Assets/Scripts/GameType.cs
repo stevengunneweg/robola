@@ -13,6 +13,7 @@ public class GameType : MonoBehaviour
     {
         enabled = false;
     }
+    
 
     protected virtual void Update()
 	{
