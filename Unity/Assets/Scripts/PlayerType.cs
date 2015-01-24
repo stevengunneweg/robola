@@ -4,19 +4,19 @@ using System.Collections;
 public class PlayerType : MonoBehaviour {
     private Light _light;
     private Rigidbody _PlayerRigidbody;
-    private PowerUps _powerUps;
+    private float standardUninfectedSpeed;
 
     public Player player { get; private set; }
-    public float infectedSpeed, uninfectedSpeed;
+    public float infectedSpeed, uninfectedSpeed, cooldown, duration;
     public KeyCode actionButton;
     public bool infected;
 
     void Awake()
     {
+        standardUninfectedSpeed = uninfectedSpeed;
         player = this.gameObject.GetComponent<Player>();
         _light = this.transform.FindChild("Point light").GetComponent<Light>();
         _PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
-        _powerUps = GameObject.Find("GameManager").GetComponent<PowerUps>();
     }
 
     void Update()
@@ -34,6 +34,22 @@ public class PlayerType : MonoBehaviour {
             _light.color = Color.white;
         }
         #endregion
+
+        //aftel gedeelte voor cooldown
+        if (cooldown > 0)
+        {
+            cooldown -= 1 * Time.deltaTime;
+        }
+
+        //aftel gedeelte voor duration
+        if (duration > 0)
+        {
+            duration -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            uninfectedSpeed = standardUninfectedSpeed;
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -50,11 +66,5 @@ public class PlayerType : MonoBehaviour {
         {
             col.gameObject.GetComponent<PlayerType>().infected = this.infected;
         }
-    }
-
-    void UsePowerUp()
-    {
-        StartCoroutine(_powerUps.TileDrop(_PlayerRigidbody));
-        //_powerUps.Blink(_PlayerRigidbody, _player.input);
     }
 }
