@@ -3,16 +3,18 @@ using System.Collections;
 
 public class Presistant : MonoBehaviour {
 
-	void Awake() {
-		DontDestroyOnLoad (gameObject);
-	}
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public static Presistant persistant;
+
+    void Awake()
+    {
+        if (persistant == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            persistant = this;
+        }
+        else if (persistant != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
