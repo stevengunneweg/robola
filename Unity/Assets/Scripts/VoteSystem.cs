@@ -33,7 +33,6 @@ public class VoteSystem : MonoBehaviour {
 	void Update () {
 		if(Mathf.Ceil(timer) < 4 && prevTime != Mathf.Ceil(timer)){
 			prevTime = (int)Mathf.Ceil(timer);
-			Debug.Log (prevTime);
 			Sound sound = new Sound(transform.root.gameObject.audio, "Voice/" + prevTime);
 		}
 		if(timer >= 0)
