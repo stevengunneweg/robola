@@ -14,20 +14,17 @@ public class GameType : MonoBehaviour
         enabled = false;
     }
 
-    protected virtual void Start()
-    {
-        players = FindObjectsOfType<PlayerType>();
-    }
-
     protected virtual void Update()
-    {
-        foreach (PlayerType player in players)
-        {
-            if (!player.infected)
-            {
-                if (Input.GetKeyDown(player.actionButton) && player.cooldown <= 0)
-                {
-                    player.cooldown = this.Cooldown;
+	{
+		players = FindObjectsOfType<PlayerType>();
+
+		foreach (PlayerType player in players)
+		{
+			if (!player.infected)
+			{
+				if (Input.GetKeyDown(player.actionButton) && player.cooldown <= 0)
+				{
+					player.cooldown = this.Cooldown;
                     player.duration = this.Duration;
                     UsePowerup(player);
                 }
