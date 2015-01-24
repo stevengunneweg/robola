@@ -49,8 +49,6 @@ public class Map : MonoBehaviour {
 
 			current = FindClosest(penisses[0, y].transform.position + new Vector3(0, 0, PENIS_SIZE));
 		}
-
-		PushColumn(3, Direction.Down);
 	}
 
 	private Penis FindClosest(Vector3 position)
