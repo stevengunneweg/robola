@@ -40,6 +40,13 @@ ModelImporter:
     4300008: Piece_Straight016
     4300010: Piece_Straight017
     4300012: Piece_Straight018
+    6400000: Piece_OuterCorner006
+    6400002: Piece_OuterCorner007
+    6400004: Piece_Straight015
+    6400006: Piece_Straight016
+    6400008: Piece_Straight017
+    6400010: Piece_Straight018
+    6400012: Plane015
     9500000: //RootNode
   materials:
     importMaterials: 1

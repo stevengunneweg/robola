@@ -50,6 +50,15 @@ ModelImporter:
     4300012: Piece_Straight006
     4300014: Piece_Straight007
     4300016: Piece_Straight008
+    6400000: Piece_Straight
+    6400002: Piece_Straight002
+    6400004: Piece_Straight003
+    6400006: Piece_Straight004
+    6400008: Piece_Straight005
+    6400010: Piece_Straight006
+    6400012: Piece_Straight007
+    6400014: Piece_Straight008
+    6400016: Plane012
     9500000: //RootNode
   materials:
     importMaterials: 1
