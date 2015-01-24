@@ -1,4 +1,4 @@
-# Ebola
+# Robola
 
 Topdown game of catch made in Unity3D.
 
