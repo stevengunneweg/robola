@@ -62,11 +62,21 @@ public class PlayerType : MonoBehaviour {
         }
     }
 
+	void PlaySound(string file){
+		AudioClip clip = Resources.Load(file) as AudioClip;
+		audio.PlayOneShot(clip);
+	}
+
     void CollisionPlayer(Collision col)
     {
         if (this.infected)
         {
             col.gameObject.GetComponent<PlayerType>().infected = this.infected;
-        }
-    }
+			PlaySound("Sounds/takeover sfx");
+			Debug.Log (12);
+		} else{
+			PlaySound("Sounds/hit sfx");
+			Debug.Log (12);
+		}
+	}
 }
