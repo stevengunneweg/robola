@@ -13,13 +13,14 @@ public class Player : MonoBehaviour
     /// </summary>
     private int _floorMask;
     private float _h, _v;
-    private Vector3 _movement, _input;
+    private Vector3 _movement;
     private Rigidbody _playerRigidbody;
     private Quaternion _playerRotation;
     #endregion
 
     public float speed, rotationSpeed;
     public int playerNumber;
+    public Vector3 input;
 
     void Awake()
     {
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        _input = new Vector3(Input.GetAxisRaw("Player" + playerNumber + " Horizontal"), 0, Input.GetAxisRaw("Player" + playerNumber + " Vertical"));
+        input = new Vector3(Input.GetAxisRaw("Player" + playerNumber + " Horizontal"), 0, Input.GetAxisRaw("Player" + playerNumber + " Vertical"));
         _h = Input.GetAxisRaw("Player" + playerNumber + " Horizontal");
         _v = Input.GetAxisRaw("Player" + playerNumber + " Vertical");
 
@@ -37,9 +38,9 @@ public class Player : MonoBehaviour
         /// <summary>
         ///  code to make rotate the player towards you look
         /// </summary>
-        if (_input != Vector3.zero)
+        if (input != Vector3.zero)
         {
-            _playerRotation = Quaternion.LookRotation(_input);
+            _playerRotation = Quaternion.LookRotation(input);
             transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, _playerRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
         }
         #endregion
@@ -49,7 +50,6 @@ public class Player : MonoBehaviour
 
     void LateUpdate() {
         _playerRigidbody.velocity = Vector3.zero;
-        _playerRotation = Quaternion.LookRotation(Vector3.zero);
     }
 
     void Move(float h, float v)
