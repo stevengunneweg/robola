@@ -6,12 +6,13 @@ public class ColumnShiftType : GameType {
 	private Map map;
 
 	protected void Start () {
-		map = FindObjectOfType<Map>();
+		
 	}
 	
 	protected override void UsePowerup(PlayerType player)
 	{
 		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/shift penis sfx");
+        	map = FindObjectOfType<Map>();
 		Penis closest = map.FindClosest(player.transform.position);
 		for (int y = 0; y < map.penisses.GetLength(0); y++) {
 			for (int x = 0; x < map.penisses.GetLength(1); x++) {
