@@ -8,8 +8,10 @@ public class DropTileType : GameType {
 
     protected override void UsePowerup(PlayerType player)
     {
-        particles = player.GetComponent<ParticleSystem>();
+
+        particles = player.GetComponent<ParticleSystem>();/*
 		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/tile sfx");
+        */
         StartCoroutine(TileDrop(player));
     }
 
