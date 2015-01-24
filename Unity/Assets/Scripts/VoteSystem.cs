@@ -22,7 +22,7 @@ public class VoteSystem : MonoBehaviour {
 		List<GameType> types = FindObjectsOfType<GameType>().ToList ();
 
 		foreach(Choice choice in choices)
-		{
+		{	
 			int index = Random.Range (0, types.Count-1);
 			choice.type = types[index];
 			types.Remove(choice.type);

@@ -18,6 +18,7 @@ public class Choice : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
+		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/vote");
 		if(other.tag == "Player")
 			votes++;
 		
