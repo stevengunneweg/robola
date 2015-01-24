@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using System.Collections.Generic;
 
 public class VoteSystem : MonoBehaviour {
 
@@ -16,6 +17,14 @@ public class VoteSystem : MonoBehaviour {
 		done = false;
 		timer = 10;
 		choices = FindObjectsOfType<Choice>();
+		List<GameType> types = FindObjectsOfType<GameType>().ToList ();
+
+		foreach(Choice choice in choices)
+		{
+			int index = Random.Range (0, types.Count-1);
+			choice.type = types[index];
+			types.Remove(choice.type);
+		}
 	}
 	
 	// Update is called once per frame
@@ -42,6 +51,8 @@ public class VoteSystem : MonoBehaviour {
 	{
 		Choice chosen = choices.OrderByDescending(c => c.votes).First();
 		chosen.renderer.material.color = Color.green;
+
+		chosen.type.enabled = true;
 
 		yield return new WaitForSeconds(1);
 
