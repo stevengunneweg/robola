@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerType : MonoBehaviour {
     private Light _light;
     private Rigidbody _PlayerRigidbody;
-    private float standardUninfectedSpeed;
+    private float standardUninfectedSpeed,standardInfectedSpeed;
 
     public Player player { get; private set; }
     public float infectedSpeed, uninfectedSpeed, cooldown, duration;
@@ -13,6 +13,7 @@ public class PlayerType : MonoBehaviour {
 
     void Awake()
     {
+        standardInfectedSpeed = infectedSpeed;
         standardUninfectedSpeed = uninfectedSpeed;
         player = this.gameObject.GetComponent<Player>();
         _light = this.transform.FindChild("Point light").GetComponent<Light>();
@@ -49,6 +50,7 @@ public class PlayerType : MonoBehaviour {
         else
         {
             uninfectedSpeed = standardUninfectedSpeed;
+            infectedSpeed = standardInfectedSpeed;
         }
     }
 
