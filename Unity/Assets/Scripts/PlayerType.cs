@@ -19,7 +19,10 @@ public class PlayerType : MonoBehaviour {
         player = this.gameObject.GetComponent<Player>();
         _light = this.transform.FindChild("Point light").GetComponent<Light>();
         _PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
-        _partSyst = GetComponent<ParticleSystem>();
+
+        if (Application.loadedLevelName.Contains("Game_Scene")) {
+            _partSyst = GetComponent<ParticleSystem>();
+        }
     }
 
     void Update()
@@ -31,9 +34,13 @@ public class PlayerType : MonoBehaviour {
         if (infected)
         {
             player.speed = infectedSpeed;
-            _partSyst.startSize = 2f;
-            _partSyst.startColor = Color.black;
-            _partSyst.Emit(5);
+            if (_partSyst != null)
+            {
+                _partSyst.startSize = 1f;
+                _partSyst.startColor = Color.black;
+                _partSyst.startLifetime = .5f;
+                _partSyst.Emit(2);
+            }
         }else {
             player.speed = uninfectedSpeed;
             _light.color = Color.white;
