@@ -35,6 +35,8 @@ public class Game : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 		PlaySound();
 		InfectorWinPanel.SetActive(true);
+		yield return new WaitForSeconds(5);
+		Application.LoadLevel("Menu");
 	}
 
 	private IEnumerator ShowPlayerWin()
