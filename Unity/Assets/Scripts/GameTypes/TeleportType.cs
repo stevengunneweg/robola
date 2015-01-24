@@ -4,19 +4,39 @@ using System.Collections;
 public class TeleportType : GameType {
 
 	private Map map;
+    private TrailRenderer TR;
+    private ParticleSystem PS;
 
 	protected override void Start () {
 		base.Start ();
 		map = FindObjectOfType<Map>();
+
+        
 	}
 	
 	protected override void UsePowerup(PlayerType player)
 	{
 		float yPos = player.transform.position.y;
 		Vector3 newPos = map.RandomPenis ().transform.position;
+        TR = player.GetComponent<TrailRenderer>();
+        PS = player.GetComponent<ParticleSystem>();
+        
+        StartCoroutine(trail(newPos, yPos, player));
 
 		//Todo: check if penis is occupied
 
-		player.transform.position = new Vector3(newPos.x, yPos, newPos.y);
+		
+        
 	}
+
+    IEnumerator trail(Vector3 newPos, float yPos, PlayerType player)
+    {
+      
+        TR.enabled = true;
+        PS.Emit(30);
+        yield return new WaitForSeconds(.3f);
+        player.transform.position = new Vector3(newPos.x, yPos, newPos.y);
+        yield return new WaitForSeconds(1f);
+        TR.enabled = false;
+    }
 }
