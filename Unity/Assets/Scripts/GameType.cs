@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameType : MonoBehaviour
 {
     public string TypeName;
-    public float Cooldown;
+    public float Cooldown,Duration;
 
     private PlayerType[] players;
 
