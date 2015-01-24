@@ -7,6 +7,7 @@ public class DropTileType : GameType {
 
     protected override void UsePowerup(PlayerType player)
     {
+		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/tile sfx");
         StartCoroutine(TileDrop(player));
     }
 
