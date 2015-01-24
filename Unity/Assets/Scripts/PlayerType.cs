@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerType : MonoBehaviour {
     private Light _light;
     private Rigidbody _PlayerRigidbody;
-    private float standardUninfectedSpeed,standardInfectedSpeed;
+    private float standardUninfectedSpeed, standardInfectedSpeed;
+    private ParticleSystem _partSyst;
 
     public Player player { get; private set; }
     public float infectedSpeed, uninfectedSpeed, cooldown, duration;
@@ -18,6 +19,7 @@ public class PlayerType : MonoBehaviour {
         player = this.gameObject.GetComponent<Player>();
         _light = this.transform.FindChild("Point light").GetComponent<Light>();
         _PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        _partSyst = GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -59,6 +61,7 @@ public class PlayerType : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             CollisionPlayer(col);
+            
         }
     }
 
@@ -72,9 +75,21 @@ public class PlayerType : MonoBehaviour {
         if (this.infected)
         {
             col.gameObject.GetComponent<PlayerType>().infected = this.infected;
+            if (_partSyst != null)
+            {
+                _partSyst.startSize = 1f;
+                _partSyst.startColor = Color.green;
+                _partSyst.Emit(20);
+            }
 			PlaySound("Sounds/takeover sfx");
-		} else{
-			PlaySound("Sounds/hit sfx");
+		} else{			
+            if (_partSyst != null)
+            {
+                _partSyst.startSize = 3f;
+                _partSyst.startColor = Color.white;
+                _partSyst.Emit(20);
+            }
+            PlaySound("Sounds/hit sfx");
 		}
 	}
 }
