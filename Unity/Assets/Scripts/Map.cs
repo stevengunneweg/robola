@@ -7,7 +7,7 @@ public class Map : MonoBehaviour {
 
 	public const int MAP_WIDTH = 9;
 	public const int MAP_HEIGHT = 9;
-	public const int PENIS_SIZE = 40;
+	public const int PENIS_SIZE = 4;
 
 	public Penis[,] penisses;
 
