@@ -5,6 +5,7 @@ public class PlayerType : MonoBehaviour {
     private Light _light;
     private Rigidbody _PlayerRigidbody;
     private PowerUps _powerUps;
+    private float standardUninfectedSpeed;
 
     public Player player { get; private set; }
     public float infectedSpeed, uninfectedSpeed, cooldown, duration;
@@ -13,6 +14,7 @@ public class PlayerType : MonoBehaviour {
 
     void Awake()
     {
+        standardUninfectedSpeed = uninfectedSpeed;
         player = this.gameObject.GetComponent<Player>();
         _light = this.transform.FindChild("Point light").GetComponent<Light>();
         _PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
@@ -45,6 +47,10 @@ public class PlayerType : MonoBehaviour {
         if (duration > 0)
         {
             duration -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            uninfectedSpeed = standardUninfectedSpeed;
         }
     }
 
