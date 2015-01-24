@@ -73,10 +73,8 @@ public class PlayerType : MonoBehaviour {
         {
             col.gameObject.GetComponent<PlayerType>().infected = this.infected;
 			PlaySound("Sounds/takeover sfx");
-			Debug.Log (12);
 		} else{
 			PlaySound("Sounds/hit sfx");
-			Debug.Log (12);
 		}
 	}
 }
