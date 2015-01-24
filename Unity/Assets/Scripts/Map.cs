@@ -205,18 +205,18 @@ public class Map : MonoBehaviour {
 		if (penisPos.Equals(new Vector2(-1, -1))) {
 			return;
 		}
-		List<Penis> penissesToRotate;
-		if (penisPos.x > 0) { //Left
-			penissesToRotate.Add(penisses[penisPos.x - 1, penisPos.y]);
+		List<Penis> penissesToRotate = new List<Penis>();
+		if ((int)penisPos.x > 0) { //Left
+			penissesToRotate.Add(penisses[(int)penisPos.x - 1, (int)penisPos.y]);
 		}
-		if (penisPos.y > 0) { //Up
-			penissesToRotate.Add(penisses[penisPos.x, penisPos.y - 1]);
+		if ((int)penisPos.y > 0) { //Up
+			penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y - 1]);
 		}
-		if (penisPos.x < 9) { //Right
-			penissesToRotate.Add(penisses[penisPos.x + 1, penisPos.y]);
+		if ((int)penisPos.x < 9) { //Right
+			penissesToRotate.Add(penisses[(int)penisPos.x + 1, (int)penisPos.y]);
 		}
-		if (penisPos.y < 9) { //Down
-			penissesToRotate.Add(penisses[penisPos.x, penisPos.y + 1]);
+		if ((int)penisPos.y < 9) { //Down
+			penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y + 1]);
 		}
 		Penis temp = penissesToRotate[penissesToRotate.Count - 1];
 		for (int i = penissesToRotate.Count - 2; i >= 0; i--) {
@@ -230,18 +230,18 @@ public class Map : MonoBehaviour {
 		if (penisPos.Equals(new Vector2(-1, -1))) {
 			return;
 		}
-		List<Penis> penissesToRotate;
-		if (penisPos.x > 0) { //Left
-			penissesToRotate.Add(penisses[penisPos.x - 1, penisPos.y]);
+		List<Penis> penissesToRotate = new List<Penis>();
+		if ((int)penisPos.x > 0) { //Left
+			penissesToRotate.Add(penisses[(int)penisPos.x - 1, (int)penisPos.y]);
 		}
-		if (penisPos.y > 0) { //Up
-				penissesToRotate.Add(penisses[penisPos.x, penisPos.y - 1]);
+		if ((int)penisPos.y > 0) { //Up
+				penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y - 1]);
 		}
-		if (penisPos.x < 9) { //Right
-			penissesToRotate.Add(penisses[penisPos.x + 1, penisPos.y]);
+		if ((int)penisPos.x < 9) { //Right
+			penissesToRotate.Add(penisses[(int)penisPos.x + 1, (int)penisPos.y]);
 		}
-		if (penisPos.y < 9) { //Down
-			penissesToRotate.Add(penisses[penisPos.x, penisPos.y + 1]);
+		if ((int)penisPos.y < 9) { //Down
+			penissesToRotate.Add(penisses[(int)penisPos.x, (int)penisPos.y + 1]);
 		}
 		Penis temp = penissesToRotate[0];
 		for (int i = 1; i < penissesToRotate.Count; i++) {
