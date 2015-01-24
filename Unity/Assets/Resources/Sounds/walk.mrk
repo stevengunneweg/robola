@@ -1,0 +1,21 @@
+Markers
+{
+	Marker
+	{
+		Name8=*
+		Comment8
+		Pos=0
+		Type=6
+		Flags=0
+		Extra=0
+	}
+	Marker1
+	{
+		Name8=*
+		Comment8
+		Pos=20354
+		Type=7
+		Flags=0
+		Extra=-1
+	}
+}

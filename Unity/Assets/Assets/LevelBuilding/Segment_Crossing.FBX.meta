@@ -3,33 +3,33 @@ guid: f19830c5641378a408ed0961b23db745
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Box089
-    100002: Box090
-    100004: Box091
-    100006: Box092
+    100000: Piece_OuterCorner
+    100002: Piece_OuterCorner002
+    100004: Piece_OuterCorner003
+    100006: Piece_OuterCorner004
     100008: Plane009
     100010: //RootNode
-    400000: Box089
-    400002: Box090
-    400004: Box091
-    400006: Box092
+    400000: Piece_OuterCorner
+    400002: Piece_OuterCorner002
+    400004: Piece_OuterCorner003
+    400006: Piece_OuterCorner004
     400008: Plane009
     400010: //RootNode
-    2300000: Box089
-    2300002: Box090
-    2300004: Box091
-    2300006: Box092
+    2300000: Piece_OuterCorner
+    2300002: Piece_OuterCorner002
+    2300004: Piece_OuterCorner003
+    2300006: Piece_OuterCorner004
     2300008: Plane009
-    3300000: Box089
-    3300002: Box090
-    3300004: Box091
-    3300006: Box092
+    3300000: Piece_OuterCorner
+    3300002: Piece_OuterCorner002
+    3300004: Piece_OuterCorner003
+    3300006: Piece_OuterCorner004
     3300008: Plane009
-    4300000: Box089
-    4300002: Box090
-    4300004: Box091
-    4300006: Plane009
-    4300008: Box092
+    4300000: Plane009
+    4300002: Piece_OuterCorner
+    4300004: Piece_OuterCorner002
+    4300006: Piece_OuterCorner003
+    4300008: Piece_OuterCorner004
     9500000: //RootNode
   materials:
     importMaterials: 1

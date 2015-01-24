@@ -13,6 +13,8 @@ public class Game : MonoBehaviour {
 	public GameObject InfectorWinPanel;
 	public GameObject PlayerWinPanel;
 
+	public bool soundPlayed = false;
+
 	void Update () {
 		//GameObject.Find("GameTimer").GetComponent<Text>().text = time.ToString("f2");
 		if(FindObjectsOfType<PlayerType>().Where(p => !p.infected).ToList().Count == 0)
@@ -21,15 +23,24 @@ public class Game : MonoBehaviour {
 		}
 	}
 
+	private void PlaySound(){
+		if (!soundPlayed){
+			soundPlayed = true;
+			Sound sound = new Sound(transform.root.gameObject.audio, "Voice/game over");
+		}
+	}
+
 	private IEnumerator ShowInfectorWin()
 	{
 		yield return new WaitForSeconds(1);
+		PlaySound();
 		InfectorWinPanel.SetActive(true);
 	}
 
 	private IEnumerator ShowPlayerWin()
 	{
 		yield return new WaitForSeconds(1);
+		PlaySound();
 		PlayerWinPanel.SetActive(true);
 	}
 }

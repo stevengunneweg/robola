@@ -22,7 +22,7 @@ public class VoteSystem : MonoBehaviour {
 		List<GameType> types = FindObjectsOfType<GameType>().ToList ();
 
 		foreach(Choice choice in choices)
-		{
+		{	
 			int index = Random.Range (0, types.Count-1);
 			choice.type = types[index];
 			types.Remove(choice.type);
@@ -33,7 +33,6 @@ public class VoteSystem : MonoBehaviour {
 	void Update () {
 		if(Mathf.Ceil(timer) < 4 && prevTime != Mathf.Ceil(timer)){
 			prevTime = (int)Mathf.Ceil(timer);
-			Debug.Log (prevTime);
 			Sound sound = new Sound(transform.root.gameObject.audio, "Voice/" + prevTime);
 		}
 		if(timer >= 0)
