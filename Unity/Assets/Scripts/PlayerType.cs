@@ -65,6 +65,7 @@ public class PlayerType : MonoBehaviour {
 
     void UsePowerUp()
     {
-        _powerUps.Blink(_PlayerRigidbody, _player.input);
+        _powerUps.TileDrop(_PlayerRigidbody);
+        //_powerUps.Blink(_PlayerRigidbody, _player.input);
     }
 }
