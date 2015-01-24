@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
         Move(_h, _v);       
     }
 
+    void LateUpdate() {
+        _playerRigidbody.velocity = Vector3.zero;
+        _playerRotation = Quaternion.LookRotation(Vector3.zero);
+    }
+
     void Move(float h, float v)
     {
         // Set the movement vector based on the axis input.
