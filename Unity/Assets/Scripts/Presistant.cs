@@ -4,6 +4,7 @@ using System.Collections;
 public class Presistant : MonoBehaviour {
 
     public static Presistant persistant;
+    public GameType Picked;
 
     void Awake()
     {
@@ -12,9 +13,10 @@ public class Presistant : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             persistant = this;
         }
-        else if (persistant != this)
-        {
-            Destroy(gameObject);
-        }
+    }
+
+    public void DisablePicked()
+    {
+        Picked.enabled = false;
     }
 }
