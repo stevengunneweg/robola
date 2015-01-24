@@ -7,8 +7,7 @@ public class TeleportType : GameType {
     private TrailRenderer TR;
     private ParticleSystem PS;
 
-	protected override void Start () {
-		base.Start ();
+	protected void Start () {
 		map = FindObjectOfType<Map>();
 
         

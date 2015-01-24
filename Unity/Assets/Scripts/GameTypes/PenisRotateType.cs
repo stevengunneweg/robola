@@ -5,8 +5,7 @@ public class PenisRotateType : GameType {
 
 	private Map map;
 
-	protected override void Start () {
-		base.Start ();
+	protected void Start () {
 		map = FindObjectOfType<Map>();
 	}
 	
