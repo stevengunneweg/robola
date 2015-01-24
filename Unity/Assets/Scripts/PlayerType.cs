@@ -31,7 +31,9 @@ public class PlayerType : MonoBehaviour {
         if (infected)
         {
             player.speed = infectedSpeed;
-            _light.color = Color.green;
+            _partSyst.startSize = 2f;
+            _partSyst.startColor = Color.black;
+            _partSyst.Emit(5);
         }else {
             player.speed = uninfectedSpeed;
             _light.color = Color.white;
