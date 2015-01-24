@@ -1,0 +1,7 @@
+Unity encode de .wav files naar ogg of mp3, dus de grote van de source files maakt niet uit. 
+Als het spel te groot wordt, zet dan de encode settings lager. 
+
+-Waarom wav en niet mp3?
+wav files loopen goed en mp3 files loopen niet lekker. De encoder zorgt ervoor dat hij blijft loopen, maar verlaagt zelf de kwaliteit
+
+http://docs.unity3d.com/Manual/AudioFiles.html
