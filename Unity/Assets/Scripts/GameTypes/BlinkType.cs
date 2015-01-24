@@ -5,6 +5,6 @@ public class BlinkType : GameType {
 
     protected override void UsePowerup(PlayerType player)
     {
-        player.rigidbody.AddForce(player.player.input * 100000);
+        player.transform.position += (player.player.input * 50);
     }
 }
