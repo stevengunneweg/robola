@@ -8,11 +8,6 @@ public class SwitchWithInfectedFurthestAwayType : GameType
     private float currentDistance;
     private Vector3 playerPos, infectedPos;
 
-    void Awake()
-    {
-
-    }
-
     protected override void UsePowerup(PlayerType player)
     {
         SwitchWithInfected(player, FurthestAway(player));

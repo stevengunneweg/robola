@@ -3,7 +3,17 @@ using System.Collections;
 
 public class Choice : MonoBehaviour {
 
-	public GameType type;
+	private GameType _type;
+	public GameType type {
+		get {
+			return _type;
+		} 
+		set {
+			_type = value;
+			transform.FindChild("Label").GetComponent<TextMesh>().text = _type.TypeName;
+
+		}
+	}
 	public int votes;
 
 	void OnTriggerEnter(Collider other)

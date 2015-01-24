@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class Game : MonoBehaviour {
 	}
 
 	void Update () {
+		GameObject.Find("GameTimer").GetComponent<Text>().text = time.ToString("f2");
 		if(FindObjectsOfType<PlayerType>().Where(p => !p.infected).ToList().Count == 0)
 		{
 			StartCoroutine(ShowInfectorWin());
