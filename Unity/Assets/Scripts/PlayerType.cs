@@ -7,7 +7,7 @@ public class PlayerType : MonoBehaviour {
     private PowerUps _powerUps;
 
     public Player player { get; private set; }
-    public float infectedSpeed, uninfectedSpeed;
+    public float infectedSpeed, uninfectedSpeed, cooldown, duration;
     public KeyCode actionButton;
     public bool infected;
 
@@ -34,6 +34,18 @@ public class PlayerType : MonoBehaviour {
             _light.color = Color.white;
         }
         #endregion
+
+        //aftel gedeelte voor cooldown
+        if (cooldown > 0)
+        {
+            cooldown -= 1 * Time.deltaTime;
+        }
+
+        //aftel gedeelte voor duration
+        if (duration > 0)
+        {
+            duration -= 1 * Time.deltaTime;
+        }
     }
 
     void OnCollisionEnter(Collision col)

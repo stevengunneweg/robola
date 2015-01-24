@@ -25,9 +25,10 @@ public class GameType : MonoBehaviour
         {
             if (!player.infected)
             {
-                if (Input.GetKeyDown(player.actionButton))
+                if (Input.GetKeyDown(player.actionButton) && player.cooldown <= 0)
                 {
-                    Debug.Log("test");
+                    player.cooldown = this.Cooldown;
+                    player.duration = this.Duration;
                     UsePowerup(player);
                 }
             }
