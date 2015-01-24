@@ -9,12 +9,12 @@ public class ShowRoundTimer : MonoBehaviour {
 
     void Awake()
     {
-        _timer = GameObject.Find("GameRound").GetComponent<RoundTimer>();
+        _timer = GameObject.Find("GameManager").GetComponent<RoundTimer>();
         _text = GetComponent<Text>();
     }
 
     void Update()
     {
-        _text.text = _timer.CountDownGet.ToString();
+        _text.text = _timer.CountDownGet.ToString("f2");
     }
 }

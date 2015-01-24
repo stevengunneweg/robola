@@ -31,8 +31,8 @@ public class RoundTimer : MonoBehaviour {
         _start = true;
     }
 
-    public int CountDownGet
+    public float CountDownGet
     {
-        get { return (int)_time; }
+        get { return _time; }
     }
 }

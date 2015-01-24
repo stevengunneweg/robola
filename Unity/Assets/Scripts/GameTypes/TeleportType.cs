@@ -8,7 +8,6 @@ public class TeleportType : GameType {
     private ParticleSystem PS;
 
 	protected void Start () {
-		map = FindObjectOfType<Map>();
 
         
 	}
@@ -16,7 +15,7 @@ public class TeleportType : GameType {
 	protected override void UsePowerup(PlayerType player)
 	{
 		float yPos = player.transform.position.y;
-		Vector3 newPos = map.RandomPenis ().transform.position;
+        Vector3 newPos = FindObjectOfType<Map>().RandomPenis().transform.position;
         TR = player.GetComponent<TrailRenderer>();
         PS = player.GetComponent<ParticleSystem>();
         

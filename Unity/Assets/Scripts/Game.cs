@@ -8,13 +8,13 @@ public class Game : MonoBehaviour {
 
 	private GameType type;
 	private List<object> players;
-	private	float time;
+	//private	float time;
 
 	public GameObject InfectorWinPanel;
 	public GameObject PlayerWinPanel;
 
 	void Update () {
-		GameObject.Find("GameTimer").GetComponent<Text>().text = time.ToString("f2");
+		//GameObject.Find("GameTimer").GetComponent<Text>().text = time.ToString("f2");
 		if(FindObjectsOfType<PlayerType>().Where(p => !p.infected).ToList().Count == 0)
 		{
 			StartCoroutine(ShowInfectorWin());
