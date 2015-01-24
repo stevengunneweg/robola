@@ -14,8 +14,10 @@ public class PowerUps : MonoBehaviour {
         player.AddForce(input * 100000);
     }
 
-    public void TileDrop(Rigidbody player)
+    public IEnumerator TileDrop(Rigidbody player)
     {
         GameObject tileDrop = Instantiate(tile, player.transform.position, transform.rotation) as GameObject;
+        yield return new WaitForSeconds(3);
+        Destroy(tileDrop);
     }
 }

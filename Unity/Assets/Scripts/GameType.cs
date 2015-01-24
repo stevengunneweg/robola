@@ -1,18 +1,42 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GameType
+public class GameType : MonoBehaviour
 {
-	public GameType ()
-	{
-	}
+    public string TypeName;
+    public float Cooldown;
 
-	public Vector3 Gravity;
-	public int PlayerBaseSpeed;
-	public int InfectedBaseSpeed;
+    private PlayerType[] players;
 
-	public virtual void OnPlayerCaptured(object player) {}
-	public virtual void OnPlayerCollideTile(object player, object tile) {}
-	public virtual void Update() {}
+    private void Awake()
+    {
+        enabled = false;
+    }
+
+    protected virtual void Start()
+    {
+        players = FindObjectsOfType<PlayerType>();
+    }
+
+    protected virtual void Update()
+    {
+        foreach (PlayerType player in players)
+        {
+            if (!player.infected)
+            {
+                if (Input.GetKeyDown(player.actionButton))
+                {
+                    Debug.Log("test");
+                    UsePowerup(player);
+                }
+            }
+        }
+        
+    }
+
+    protected virtual void UsePowerup(PlayerType player)
+    {
+    }
 }
 

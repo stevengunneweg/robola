@@ -2,19 +2,18 @@
 using System.Collections;
 
 public class PlayerType : MonoBehaviour {
-    private Player _player;
     private Light _light;
     private Rigidbody _PlayerRigidbody;
     private PowerUps _powerUps;
 
-
+    public Player player { get; private set; }
     public float infectedSpeed, uninfectedSpeed;
     public KeyCode actionButton;
     public bool infected;
 
     void Awake()
     {
-        _player = this.gameObject.GetComponent<Player>();
+        player = this.gameObject.GetComponent<Player>();
         _light = this.transform.FindChild("Point light").GetComponent<Light>();
         _PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
         _powerUps = GameObject.Find("GameManager").GetComponent<PowerUps>();
@@ -28,21 +27,11 @@ public class PlayerType : MonoBehaviour {
         /// </summary>
         if (infected)
         {
-            _player.speed = infectedSpeed;
+            player.speed = infectedSpeed;
             _light.color = Color.green;
         }else {
-            _player.speed = uninfectedSpeed;
+            player.speed = uninfectedSpeed;
             _light.color = Color.white;
-        }
-        #endregion
-        #region
-        if (!infected)
-        {
-            if (Input.GetKeyDown(actionButton))
-            {
-                Debug.Log("test");
-                UsePowerUp();
-            }
         }
         #endregion
     }
@@ -65,7 +54,7 @@ public class PlayerType : MonoBehaviour {
 
     void UsePowerUp()
     {
-        _powerUps.TileDrop(_PlayerRigidbody);
+        StartCoroutine(_powerUps.TileDrop(_PlayerRigidbody));
         //_powerUps.Blink(_PlayerRigidbody, _player.input);
     }
 }
