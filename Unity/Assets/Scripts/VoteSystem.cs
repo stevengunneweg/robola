@@ -12,6 +12,8 @@ public class VoteSystem : MonoBehaviour {
 	private float timer;
 	private bool done;
 
+	private int prevTime = 0;
+
 	// Use this for initialization
 	void Start () {
 		done = false;
@@ -29,6 +31,11 @@ public class VoteSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Mathf.Ceil(timer) < 4 && prevTime != Mathf.Ceil(timer)){
+			prevTime = (int)Mathf.Ceil(timer);
+			Debug.Log (prevTime);
+			Sound sound = new Sound(transform.root.gameObject.audio, "Voice/" + prevTime);
+		}
 		if(timer >= 0)
 		{
 			timer -= Time.deltaTime;
