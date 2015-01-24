@@ -3,36 +3,41 @@ using System.Collections;
 
 public class RoundTimer : MonoBehaviour {
 
-    public float _time;
-    public bool _start, _stop;
+    public float time;
+    public bool start, stop;
+
+    void Start()
+    {
+        StartCountDown(time);
+    }
 
     void Update()
     {
 
-        if (_start && !_stop)
+        if (start && !stop)
         {
-            _time -= 1 / Mathf.Pow(Time.deltaTime, -1);
+            time -= 1 / Mathf.Pow(Time.deltaTime, -1);
         }
         else
         {
-            _start = false;
+            start = false;
         }
     }
 
     public void StopCountDown()
     {
-        _stop = true;
+        stop = true;
     }
 
-    public void StartCountDown(float time)
+    public void StartCountDown(float _time)
     {
-        _time = time;
-        _stop = false;
-        _start = true;
+        time = _time;
+        stop = false;
+        start = true;
     }
 
     public float CountDownGet
     {
-        get { return _time; }
+        get { return time; }
     }
 }
