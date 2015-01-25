@@ -16,7 +16,7 @@ public class ReadySystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(readyField.votes >= 3 && !ready) //Todo: change to 4
+		if(readyField.votes >= 4 && !ready) //Todo: change to 4
 		{
 			ready = true;
 			StartCoroutine(StartGame());
