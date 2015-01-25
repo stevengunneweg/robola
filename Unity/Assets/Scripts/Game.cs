@@ -30,9 +30,11 @@ public class Game : MonoBehaviour {
 		//GameObject.Find("GameTimer").GetComponent<Text>().text = time.ToString("f2");
 		if(FindObjectsOfType<PlayerType>().Where(p => !p.infected).ToList().Count == 0)
 		{
+            FindObjectOfType<RoundTimer>().StopCountDown();
 			StartCoroutine(ShowInfectorWin());
 		}
 		if (FindObjectOfType<RoundTimer> ().time <= 0) {
+            FindObjectOfType<RoundTimer>().StopCountDown();
 			StartCoroutine(ShowPlayerWin());
 		}
 	}
@@ -50,8 +52,7 @@ public class Game : MonoBehaviour {
 		PlaySound();
 		InfectorWinPanel.SetActive(true);
 		yield return new WaitForSeconds(5);
-        Presistant.persistant.DisablePicked();
-        Presistant.persistant.Picked = null;
+        clearPowerUps();
 		Application.LoadLevel("Menu");
 	}
 
@@ -61,8 +62,16 @@ public class Game : MonoBehaviour {
 		PlaySound();
 		PlayerWinPanel.SetActive(true);
 		yield return new WaitForSeconds(5);
-		Presistant.persistant.DisablePicked();
-		Presistant.persistant.Picked = null;
+        clearPowerUps();
 		Application.LoadLevel("Menu");
 	}
+
+    void clearPowerUps()
+    {
+        List<GameType> types = FindObjectsOfType<GameType>().ToList();
+        foreach (GameType type in types)
+        {
+            type.enabled = false;
+        }
+    }
 }

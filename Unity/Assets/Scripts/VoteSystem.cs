@@ -58,7 +58,6 @@ public class VoteSystem : MonoBehaviour {
 		Choice chosen = choices.OrderByDescending(c => c.votes).First();
 		chosen.renderer.material.color = Color.green;
 
-        Presistant.persistant.Picked = chosen.type;
 		chosen.type.enabled = true;
 
 		yield return new WaitForSeconds(1);
