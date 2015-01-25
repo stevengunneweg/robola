@@ -14,12 +14,15 @@ public class RoundTimer : MonoBehaviour {
     void Update()
     {
 
-        if (start && !stop)
+        if (start && !stop && time > 0)
         {
             time -= 1 / Mathf.Pow(Time.deltaTime, -1);
         }
         else
         {
+			if (time < 0) {
+				time = 0;
+			}
             start = false;
         }
     }
