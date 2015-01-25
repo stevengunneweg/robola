@@ -19,7 +19,7 @@ public class DropTileType : GameType {
     {
         particles.startColor = Color.red;
         particles.Emit(2);
-        GameObject tileDrop = Instantiate(tile, currentPlayer.transform.position, transform.rotation) as GameObject;
+        GameObject tileDrop = Instantiate(tile, currentPlayer.transform.position, Quaternion.EulerAngles(currentPlayer.transform.rotation.eulerAngles.x, currentPlayer.transform.rotation.eulerAngles.y + 180, currentPlayer.transform.rotation.eulerAngles.z)) as GameObject;
         yield return new WaitForSeconds(3);
         Destroy(tileDrop);
     }
