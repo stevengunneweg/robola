@@ -31,11 +31,11 @@ public class Game : MonoBehaviour {
 		if(FindObjectsOfType<PlayerType>().Where(p => !p.infected).ToList().Count == 0)
 		{
             FindObjectOfType<RoundTimer>().StopCountDown();
-			StartCoroutine(ShowInfectorWin());
+			//StartCoroutine(ShowInfectorWin());
 		}
 		if (FindObjectOfType<RoundTimer> ().time <= 0) {
             FindObjectOfType<RoundTimer>().StopCountDown();
-			StartCoroutine(ShowPlayerWin());
+			//StartCoroutine(ShowPlayerWin());
 		}
 	}
 
