@@ -231,6 +231,10 @@ public class Map : MonoBehaviour {
 	
 	
 	public void RotatePenissesAroundPenisCW(Penis penis) {
+		if (mutating) {
+			return;
+		}
+		mutating = true;
 		List<PenisMovement> movements = new List<PenisMovement>();
 
 		Vector2 penisPos = GetPenisPostition (penis);
@@ -257,10 +261,17 @@ public class Map : MonoBehaviour {
 		}
 		movements.Add (new PenisMovement(temp, penissesToRotate[0].transform.position, true));
 		penissesToRotate[0] = temp;
+		StartCoroutine (MutationDone());
 		MovePenis(movements);
 	}
 
 	public void RotatePenissesAroundPenisCCW(Penis penis) {
+		if (mutating) {
+			return;
+		}
+		mutating = true;
+		List<PenisMovement> movements = new List<PenisMovement>();
+
 		Vector2 penisPos = GetPenisPostition (penis);
 		if (penisPos.Equals(new Vector2(-1, -1))) {
 			return;
@@ -280,8 +291,12 @@ public class Map : MonoBehaviour {
 		}
 		Penis temp = penissesToRotate[0];
 		for (int i = 1; i < penissesToRotate.Count; i++) {
+			movements.Add (new PenisMovement(penissesToRotate[i], penissesToRotate[i + 1].transform.position, true));
 			penissesToRotate[i - 1] = penissesToRotate[i];
 		}
+		movements.Add (new PenisMovement(temp, penissesToRotate[0].transform.position, true));
 		penissesToRotate[penissesToRotate.Count - 1] = temp;
+		StartCoroutine (MutationDone());
+		MovePenis(movements);
 	}
 }
