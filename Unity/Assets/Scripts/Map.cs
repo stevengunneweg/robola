@@ -175,6 +175,7 @@ public class Map : MonoBehaviour {
 	private IEnumerator MutationDone()
 	{
 		yield return new WaitForSeconds(1);
+		Start ();
 		mutating = false;
 	}
 
