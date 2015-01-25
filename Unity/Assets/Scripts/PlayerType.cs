@@ -7,6 +7,7 @@ public class PlayerType : MonoBehaviour {
     private float standardUninfectedSpeed, standardInfectedSpeed;
     private ParticleSystem _partSyst;
     private TrailRenderer trail;
+    private Vector3 SpawnPoint;
 
     public Player player { get; private set; }
     public float infectedSpeed, uninfectedSpeed, cooldown, duration;
@@ -21,6 +22,7 @@ public class PlayerType : MonoBehaviour {
         player = this.gameObject.GetComponent<Player>();
         _light = this.transform.FindChild("Point light").GetComponent<Light>();
         _PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        SpawnPoint = transform.position;
 
         if (Application.loadedLevelName.Contains("Game_Scene")) {
             _partSyst = GetComponent<ParticleSystem>();
@@ -88,8 +90,16 @@ public class PlayerType : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            CollisionPlayer(col);
-            
+            CollisionPlayer(col);            
+        }
+    }
+
+    void OnCollisionStay(Collision col)
+    {
+        Debug.Log(col.gameObject.tag);
+        if (col.gameObject.tag == "outerBorder")
+        {
+            transform.position = SpawnPoint;
         }
     }
 
