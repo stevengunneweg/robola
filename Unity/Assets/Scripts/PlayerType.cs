@@ -6,6 +6,7 @@ public class PlayerType : MonoBehaviour {
     private Rigidbody _PlayerRigidbody;
     private float standardUninfectedSpeed, standardInfectedSpeed;
     private ParticleSystem _partSyst;
+    private TrailRenderer trail;
 
     public Player player { get; private set; }
     public float infectedSpeed, uninfectedSpeed, cooldown, duration;
@@ -23,6 +24,7 @@ public class PlayerType : MonoBehaviour {
 
         if (Application.loadedLevelName.Contains("Game_Scene")) {
             _partSyst = GetComponent<ParticleSystem>();
+            trail = GetComponent<TrailRenderer>();
         }
     }
 
@@ -63,6 +65,7 @@ public class PlayerType : MonoBehaviour {
         {
             uninfectedSpeed = standardUninfectedSpeed;
             infectedSpeed = standardInfectedSpeed;
+            trail.enabled = false;
         }
     }
 
