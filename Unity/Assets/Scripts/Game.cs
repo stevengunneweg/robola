@@ -32,6 +32,9 @@ public class Game : MonoBehaviour {
 		{
 			StartCoroutine(ShowInfectorWin());
 		}
+		if (FindObjectOfType<RoundTimer> ().time <= 0) {
+			StartCoroutine(ShowPlayerWin());
+		}
 	}
 
 	private void PlaySound(){
@@ -45,7 +48,7 @@ public class Game : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(1);
 		PlaySound();
-		InfectorWinPanel.SetActive(true);        
+		InfectorWinPanel.SetActive(true);
 		yield return new WaitForSeconds(5);
         Presistant.persistant.DisablePicked();
         Presistant.persistant.Picked = null;
@@ -57,5 +60,9 @@ public class Game : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 		PlaySound();
 		PlayerWinPanel.SetActive(true);
+		yield return new WaitForSeconds(5);
+		Presistant.persistant.DisablePicked();
+		Presistant.persistant.Picked = null;
+		Application.LoadLevel("Menu");
 	}
 }
