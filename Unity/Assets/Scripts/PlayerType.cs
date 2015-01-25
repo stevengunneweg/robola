@@ -96,7 +96,6 @@ public class PlayerType : MonoBehaviour {
 
     void OnCollisionStay(Collision col)
     {
-        Debug.Log(col.gameObject.tag);
         if (col.gameObject.tag == "outerBorder")
         {
             transform.position = SpawnPoint;
