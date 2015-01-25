@@ -22,7 +22,7 @@ public class VoteSystem : MonoBehaviour {
 		List<GameType> types = FindObjectsOfType<GameType>().ToList ();
 
 		foreach(Choice choice in choices)
-		{	
+		{
 			int index = Random.Range (0, types.Count-1);
 			choice.type = types[index];
 			types.Remove(choice.type);
@@ -58,6 +58,7 @@ public class VoteSystem : MonoBehaviour {
 		Choice chosen = choices.OrderByDescending(c => c.votes).First();
 		chosen.renderer.material.color = Color.green;
 
+        Presistant.persistant.Picked = chosen.type;
 		chosen.type.enabled = true;
 
 		yield return new WaitForSeconds(1);
