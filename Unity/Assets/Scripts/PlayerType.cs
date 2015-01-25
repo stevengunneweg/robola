@@ -36,13 +36,25 @@ public class PlayerType : MonoBehaviour {
         /// </summary>
         if (infected)
         {
-            player.speed = infectedSpeed;
+            player.speed = infectedSpeed;          
+           if (Random.value > 0.97)
+            {
+                if (_light.enabled)
+                {
+                    _light.enabled = false;
+                }
+                else
+                {
+                    _light.enabled = true;
+                }
+            }
             if (_partSyst != null)
             {
                 _partSyst.startSize = 2f;
                 _partSyst.startColor = Color.black;
                 _partSyst.startLifetime = .5f;
                 _partSyst.Emit(2);
+
             }
         }else {
             player.speed = uninfectedSpeed;
@@ -65,7 +77,10 @@ public class PlayerType : MonoBehaviour {
         {
             uninfectedSpeed = standardUninfectedSpeed;
             infectedSpeed = standardInfectedSpeed;
-            trail.enabled = false;
+            if (Application.loadedLevelName.Contains("Game_Scene"))
+            {
+                trail.enabled = false;
+            }
         }
     }
 
