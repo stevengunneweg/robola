@@ -23,7 +23,7 @@ public class VoteSystem : MonoBehaviour {
 
 		foreach(Choice choice in choices)
 		{
-			int index = Random.Range (0, types.Count-1);
+			int index = Random.Range (0, types.Count);
 			choice.type = types[index];
 			types.Remove(choice.type);
 		}
