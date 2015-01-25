@@ -17,11 +17,11 @@ public class PenisRotateType : GameType {
 			for (int x = 0; x < map.penisses.GetLength(1); x++) {
 				if (map.penisses[y, x] == closest) {
 					//Todo: move correct penisses
-					if (Random.value >= 0.5) {
+					//if (Random.value >= 0.5) {
 						map.RotatePenissesAroundPenisCW(closest);
-					} else {
-						map.RotatePenissesAroundPenisCCW(closest);
-					}
+					//} else {
+					//	map.RotatePenissesAroundPenisCCW(closest);
+					//}
 				}
 			}
 		}
