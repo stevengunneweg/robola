@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public float speed, rotationSpeed;
     public int playerNumber;
     public Vector3 input;
+    public bool mayMove = true;
 
     void Awake()
     {
@@ -45,7 +46,10 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        Move(_h, _v);       
+        if (mayMove)
+        {
+            Move(_h, _v);
+        }
     }
 
     void LateUpdate() {

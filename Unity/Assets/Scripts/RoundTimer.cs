@@ -8,7 +8,7 @@ public class RoundTimer : MonoBehaviour {
 
     void Start()
     {
-        StartCountDown(time);
+        //StartCountDown(time);
     }
 
     void Update()
@@ -16,7 +16,7 @@ public class RoundTimer : MonoBehaviour {
 
         if (start && !stop && time > 0)
         {
-            time -= 1 / Mathf.Pow(Time.deltaTime, -1);
+            time -= 1 * Time.deltaTime;
         }
         else
         {
