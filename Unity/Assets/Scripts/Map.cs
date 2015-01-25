@@ -18,6 +18,8 @@ public class Map : MonoBehaviour {
 		Right
 	}
 
+	private bool mutating = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -93,6 +95,10 @@ public class Map : MonoBehaviour {
 	}
 	
 	public void PushRow(int index, Direction direction) {
+		if (mutating) {
+			return;
+		}
+		mutating = true;
 		List<PenisMovement> movements = new List<PenisMovement>();
 
 		if (direction == Direction.Right) {
@@ -123,11 +129,15 @@ public class Map : MonoBehaviour {
 
 			penisses[index,penisses.GetLength(1)-1] = temp;
 		}
-
+		
+		StartCoroutine (MutationDone());
 		MovePenis(movements);
 	}
 	public void PushColumn(int index, Direction direction) {
-		
+		if (mutating) {
+			return;
+		}
+		mutating = true;
 		List<PenisMovement> movements = new List<PenisMovement>();
 
 		if (direction == Direction.Down) {
@@ -159,16 +169,34 @@ public class Map : MonoBehaviour {
 			penisses[penisses.GetLength(0)-1, index] = temp;
 
 		}
-
+		StartCoroutine (MutationDone());
 		MovePenis(movements);
+	}
+	private IEnumerator MutationDone()
+	{
+		yield return new WaitForSeconds(1);
+		mutating = false;
 	}
 
 	private void MovePenis(List<PenisMovement> movements)
 	{
 		foreach(PenisMovement move in movements)
 		{
-			LeanTween.move(move.penis.gameObject, move.target, 1f);
+			if (move.special) {
+				StartCoroutine(SpecialMove(move.penis, move.target));
+			} else {
+				LeanTween.move(move.penis.gameObject, move.target, 1f);
+			}
 		}
+	}
+	private IEnumerator SpecialMove(Penis penis, Vector3 target)
+	{
+		LeanTween.move(penis.gameObject, penis.transform.position + new Vector3(0,3,0), .2f);
+		yield return new WaitForSeconds(.2f);
+		LeanTween.move(penis.gameObject, target + new Vector3(0,3,0), .6f);
+		yield return new WaitForSeconds(.6f);
+		LeanTween.move(penis.gameObject, target, .2f);
+		yield return new WaitForSeconds(.2f);
 	}
 
 	class PenisMovement
@@ -203,6 +231,10 @@ public class Map : MonoBehaviour {
 	
 	
 	public void RotatePenissesAroundPenisCW(Penis penis) {
+		if (mutating) {
+			return;
+		}
+		mutating = true;
 		List<PenisMovement> movements = new List<PenisMovement>();
 
 		Vector2 penisPos = GetPenisPostition (penis);
@@ -229,10 +261,17 @@ public class Map : MonoBehaviour {
 		}
 		movements.Add (new PenisMovement(temp, penissesToRotate[0].transform.position, true));
 		penissesToRotate[0] = temp;
+		StartCoroutine (MutationDone());
 		MovePenis(movements);
 	}
 
 	public void RotatePenissesAroundPenisCCW(Penis penis) {
+		if (mutating) {
+			return;
+		}
+		mutating = true;
+		List<PenisMovement> movements = new List<PenisMovement>();
+
 		Vector2 penisPos = GetPenisPostition (penis);
 		if (penisPos.Equals(new Vector2(-1, -1))) {
 			return;
@@ -252,8 +291,12 @@ public class Map : MonoBehaviour {
 		}
 		Penis temp = penissesToRotate[0];
 		for (int i = 1; i < penissesToRotate.Count; i++) {
+			movements.Add (new PenisMovement(penissesToRotate[i], penissesToRotate[i + 1].transform.position, true));
 			penissesToRotate[i - 1] = penissesToRotate[i];
 		}
+		movements.Add (new PenisMovement(temp, penissesToRotate[0].transform.position, true));
 		penissesToRotate[penissesToRotate.Count - 1] = temp;
+		StartCoroutine (MutationDone());
+		MovePenis(movements);
 	}
 }
