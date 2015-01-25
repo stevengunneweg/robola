@@ -9,7 +9,7 @@ public class PlayerPanel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Text text = transform.FindChild("Text").GetComponent<Text>();
-		text.text = "Player0" + player.player.playerNumber;
+		text.text = "Player " + player.player.playerNumber;
 	}
 	
 	// Update is called once per frame

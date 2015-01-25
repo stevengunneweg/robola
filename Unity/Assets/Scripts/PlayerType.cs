@@ -11,6 +11,7 @@ public class PlayerType : MonoBehaviour {
     public float infectedSpeed, uninfectedSpeed, cooldown, duration;
     public KeyCode actionButton;
     public bool infected;
+    public Color PlayerColor;
 
     void Awake()
     {
@@ -36,14 +37,14 @@ public class PlayerType : MonoBehaviour {
             player.speed = infectedSpeed;
             if (_partSyst != null)
             {
-                _partSyst.startSize = 1f;
+                _partSyst.startSize = 2f;
                 _partSyst.startColor = Color.black;
                 _partSyst.startLifetime = .5f;
                 _partSyst.Emit(2);
             }
         }else {
             player.speed = uninfectedSpeed;
-            _light.color = Color.white;
+            _light.color = PlayerColor;
         }
         #endregion
 
@@ -95,7 +96,7 @@ public class PlayerType : MonoBehaviour {
             if (_partSyst != null)
             {
                 _partSyst.startSize = 3f;
-                _partSyst.startColor = Color.white;
+                _partSyst.startColor = PlayerColor;
                 _partSyst.Emit(20);
             }
             PlaySound("Sounds/hit sfx");
