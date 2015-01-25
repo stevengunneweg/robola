@@ -77,7 +77,10 @@ public class PlayerType : MonoBehaviour {
         {
             uninfectedSpeed = standardUninfectedSpeed;
             infectedSpeed = standardInfectedSpeed;
-            trail.enabled = false;
+            if (Application.loadedLevelName.Contains("Game_Scene"))
+            {
+                trail.enabled = false;
+            }
         }
     }
 
