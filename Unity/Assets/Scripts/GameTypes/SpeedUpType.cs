@@ -9,13 +9,12 @@ public class SpeedUpType : GameType
         trail = player.GetComponent<TrailRenderer>();
         StartCoroutine(GottaGoFast(player));
 		//Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/speed sfx");
-        player.uninfectedSpeed = 15;
+        player.uninfectedSpeed = 12;
         
     }
 
     IEnumerator GottaGoFast(PlayerType player)
-    {
-        
+    {        
         trail.enabled = true;
         yield return new WaitForSeconds(player.duration);
         trail.enabled = false;
