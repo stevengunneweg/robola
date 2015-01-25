@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         if (input != Vector3.zero)
         {
             _playerRotation = Quaternion.LookRotation(input);
-            transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, _playerRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
+            transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(transform.eulerAngles.y, _playerRotation.eulerAngles.y - 90, rotationSpeed * Time.deltaTime);
         }
         #endregion
 
