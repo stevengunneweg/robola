@@ -18,7 +18,7 @@ public class showPowerUp : MonoBehaviour {
         {
             if (type.enabled)
             {
-                _text.text = type.GetType().Name;
+                _text.text = type.TypeName;
                 break;
             }
         }
