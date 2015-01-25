@@ -6,11 +6,12 @@ public class RowShiftType : GameType {
 	private Map map;
 
 	protected void Start () {
-		map = FindObjectOfType<Map>();
+		
 	}
 	
 	protected override void UsePowerup(PlayerType player)
 	{
+        map = FindObjectOfType<Map>();
 		Sound sound = new Sound(transform.root.gameObject.audio, "Sounds/shift sfx");
 		Penis closest = map.FindClosest(player.transform.position);
 		for (int y = 0; y < map.penisses.GetLength(0); y++) {
