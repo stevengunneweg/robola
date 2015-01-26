@@ -12,16 +12,12 @@ During each round (30 seconds) the players that are not infected have a special 
 
 Player 1:
 * W,A,S,D & Q for action
-* 
 
 Player 2:
 * I,J,K,L & U for action
-* 
 
 Player 3:
-* <,>,^,v & Left Shift for action
-* 
+* Arrow keys & Left Shift for action
 
 Player 4 (Xbox or Ps controller):
 * Left Thumbstick & A(xbox) or O(ps) for action
-* 
